@@ -128,6 +128,7 @@ int main(void)
 		{
 			player_score += 1;
 			ball.reset();
+			fmodmanager->play_sound("fx3", FX1_CH);
 		}
 
 		//if the ball goes past the player (computer wins)
@@ -135,18 +136,21 @@ int main(void)
 		{
 			ai_score += 1;
 			ball.reset();
+			fmodmanager->play_sound("fx4", FX1_CH);
 		}
 
 		//bounce ball off bottom
 		if (ball.y >= 1.0f)
 		{
 			ball.collideUp();
+			fmodmanager->play_sound("fx1", FX1_CH);
 		}
 
 		//bounce ball off top
 		if (ball.y <= -1.0f)
 		{
 			ball.collideDown();
+			fmodmanager->play_sound("fx1", FX1_CH);
 		}
 
 		//move the player paddle
@@ -177,6 +181,7 @@ int main(void)
 		{
 			ball.collideRight();
 			cpi += util.randFloat(0.001f, 0.005f);
+			fmodmanager->play_sound("fx2", FX1_CH);
 		}
 
 		//check for collisions with computer paddle
@@ -184,6 +189,7 @@ int main(void)
 		{
 			ball.collideLeft();
 			cpi += util.randFloat(0.001f, 0.005f);
+			fmodmanager->play_sound("fx2", FX1_CH);
 		}
 
 		//render
